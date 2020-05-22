@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Visit</fullName>
+    <active>true</active>
+    <errorConditionFormula>Visit_Label__r.Date_Of_Visit__c != TODAY()</errorConditionFormula>
+    <errorMessage>Can&apos;t enter visit, contact manager</errorMessage>
+</ValidationRule>

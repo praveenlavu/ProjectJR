@@ -1,0 +1,51 @@
+<apex:component >
+<apex:attribute name="addressList"  type="String[]" description="array of addresses"/>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFYsDyp-ka9mtJ4N8CY4WrwqvGYx4VUZg&callback=initMap"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<script type="text/javascript"> 
+
+$(document).ready(function() {
+    var myOptions = {
+        center: new google.maps.LatLng(37.784173, -122.401557),
+        zoom: 8,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+    var addressArray = {!addressList};  // Use this format to fill addressArray 
+
+    var geocoder = new google.maps.Geocoder();
+
+    var markerBounds = new google.maps.LatLngBounds();
+
+    for (var i = 0; i < addressArray.length; i++) {
+        geocoder.geocode( { 'address': addressArray[i]}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+                markerBounds.extend(results[0].geometry.location);
+                map.fitBounds(markerBounds);
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+    }
+});
+</script>
+<style>
+    #map {
+      font-family: Arial;
+      font-size:12px;
+      line-height:normal !important;
+      height:400px;
+      width: 400px;
+      background:transparent;
+    }
+</style>
+
+<div id="map"></div> 
+
+</apex:component>
