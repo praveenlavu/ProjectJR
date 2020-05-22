@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Type Of Payment --></label>
+    <name>Type_Of_Payment__c</name>
+    <picklistValues>
+        <masterLabel>Amex</masterLabel>
+        <translation><!-- Amex --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Cash</masterLabel>
+        <translation><!-- Cash --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Diners Club</masterLabel>
+        <translation><!-- Diners Club --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Discover</masterLabel>
+        <translation><!-- Discover --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Mastercard</masterLabel>
+        <translation><!-- Mastercard --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Visa</masterLabel>
+        <translation><!-- Visa --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,38 @@
+<apex:page doctype="html-5.0" controller="AccountSearch">
+<apex:includeScript value="{!$Resource.JQuery}"  />
+<apex:pageBlock mode="maindetail" >
+<apex:pageBlockSection columns="1"  title="Search by city" collapsible="false">
+<apex:form >
+    <apex:inputText value="{!search}" id="search" required="true" />
+     <apex:commandButton value="search" action="{!doSearch}"  status="status"/>
+    <apex:pageBlockTable value="{! wrapAccountList}" var="ac" >
+    <apex:column value="{!ac.acc.name}" headerValue="AccountName"/>
+    <apex:column value="{!ac.acc.billingcity}" headerValue="Billingcity"/>
+    <apex:column value="{!ac.acc.billingstreet}" headerValue="Billingstreet"/>
+    <apex:column >
+    <apex:actionSupport event="onclick" action="{!getSelect}"/>
+    <apex:inputCheckbox value="{!ac.selected}"  id="inputId"/>
+    </apex:column>
+    </apex:pageBlockTable>
+    
+</apex:form>
+</apex:pageBlockSection>
+</apex:pageBlock>
+<apex:form >
+     <apex:pageBlock >
+                <apex:commandButton value=" ADD Accounts" action="{!submit}"   id="table2" title="Selected Accounts" />
+             <b> <apex:input type="date" value="{!d}"   /> </b>
+      
+    <apex:pageBlockSection rendered="{!NOT(ISNULL(search))}" columns="2" >
+                <apex:outputText value="{!msg}" style="color : pink"/>
+                <apex:pageBlockTable value="{!selectedAccounts}"  var="sa"  id="table2" title="Selected Accounts">
+                    <apex:column value="{!sa.Name}" headerValue="Account Name"/>
+                    <apex:column value="{!sa.BillingStreet}" headerValue="Billing State"/>
+                    <apex:column headerValue="Date" ><apex:outputText value="{!d}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+  <c:mapcomponent addressList="{!listOfAddresses}"/>
+   </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>
